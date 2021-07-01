@@ -25,4 +25,8 @@ public class MoveDataModel{
 	public List<SearchItem> getSearch(){
 		return search;
 	}
+
+	public void setSearch(List<SearchItem> search) {
+		this.search = search;
+	}
 }

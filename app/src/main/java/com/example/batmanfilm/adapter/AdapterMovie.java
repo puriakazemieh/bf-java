@@ -62,6 +62,7 @@ private MoveDataModel searchItem;
         }
 
         public void bindBanner(SearchItem searchItem) {
+
             Picasso.get().load(searchItem.getPoster()).placeholder(R.drawable.ic_launcher_background).into(poster);
             title.setText("title: "+searchItem.getTitle());
             year.setText("year: "+searchItem.getYear());
