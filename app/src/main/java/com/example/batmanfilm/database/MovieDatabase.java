@@ -194,7 +194,7 @@ public class MovieDatabase extends SQLiteOpenHelper {
     }
 
 
-    public void addMoviewDetilraiting(RatingsItem ratingsItem, String id) {
+    public void addMoviewDetilraiting(RatingsItem ratingsItem, String id, int ratingSize) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -205,14 +205,16 @@ public class MovieDatabase extends SQLiteOpenHelper {
 
 
         try {
-           /* String d = "select * from " + router.DATABASE.TABLE_MOVIE_RAITNG + "  ";
+
+            String d = "select * from " + router.DATABASE.TABLE_MOVIE_RAITNG + " where  " + router.DATABASE.imdbID + " = '" + id + "' ";
             Cursor cursor = db.rawQuery(d, null);
-            app.l(cursor.getCount() + "");
-            if (cursor.getCount() == 0) {*/
+
+            if (cursor.getCount() < ratingSize) {
+
                 db.insert(router.DATABASE.TABLE_MOVIE_RAITNG, null, contentValues);
                 app.l("addMoviewDetilraiting     " + router.DATABASE.imdbID + "  " + id);
-
-           // }
+            }
+            // }
 
         } catch (Exception e) {
             app.l("ee " + e.getMessage());
@@ -224,8 +226,8 @@ public class MovieDatabase extends SQLiteOpenHelper {
         List<RatingsItem> dataModelList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
 
-     String GET_RAITNG_QUERY = "SELECT * FROM " + router.DATABASE.TABLE_MOVIE_RAITNG
-             +" where  " + router.DATABASE.imdbID + " = '" + id + "' ";
+        String GET_RAITNG_QUERY = "SELECT * FROM " + router.DATABASE.TABLE_MOVIE_RAITNG
+                + " where  " + router.DATABASE.imdbID + " = '" + id + "' ";
         Cursor cursor = db.rawQuery(GET_RAITNG_QUERY, null);
 
         while (cursor.moveToNext()) {

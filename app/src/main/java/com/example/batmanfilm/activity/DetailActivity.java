@@ -108,7 +108,7 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DetailModel moveDataModel) {
 
-                        //ratingSize = moveDataModel.getRatings().size();
+                        ratingSize = moveDataModel.getRatings().size();
 
                         adapterRatings = new AdapterRatings(moveDataModel.getRatings());
                         recyclerView.setAdapter(adapterRatings);
@@ -186,7 +186,7 @@ public class DetailActivity extends AppCompatActivity {
 
             for (int i = 0; i < detailModels[0].getRatings().size(); i++) {
                 RatingsItem resultItem = detailModels[0].getRatings().get(i);
-                database.addMoviewDetilraiting(resultItem, idOroduct);
+                database.addMoviewDetilraiting(resultItem, idOroduct,ratingSize);
             }
 
 
