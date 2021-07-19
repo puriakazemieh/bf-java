@@ -34,6 +34,9 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterMovie adapterMovie;
     private HomeViewModel homeViewModel;
+
+
+
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private MovieDatabase movieDatabase;
     @Override
